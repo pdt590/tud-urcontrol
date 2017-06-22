@@ -85,7 +85,7 @@ public interface Motion extends URScriptInterface {
 	 *            along/about an axis between the actual tcp position and the
 	 *            one set by the program.
 	 */
-	void force_mode(@Named("p") CartesianPosition task_frame, Vector<Boolean> selection_vector, int wrench, ForceInterpretation type,
+	void force_mode(CartesianPosition task_frame, Vector<Boolean> selection_vector, int wrench, ForceInterpretation type,
 			float[] limits);
 
 	/**
@@ -125,7 +125,7 @@ public interface Motion extends URScriptInterface {
 	 * @param blend_radius
 	 *            blend radius (of target pose) [m]
 	 */
-	void movec(@Named("p") CartesianPosition pose_via,@Named("p") CartesianPosition pose_to, @Named("a=") float acceleration, @Named("v=") float speed, @Named("r=") float blend_radius);
+	void movec(CartesianPosition pose_via,CartesianPosition pose_to, @Named("a=") float acceleration, @Named("v=") float speed, @Named("r=") float blend_radius);
 
 	default void movec(CartesianPosition pose_via, CartesianPosition pose_to) {
 		movec(pose_via, pose_to, 1.2f, 0.25f, 0.0f);
@@ -162,7 +162,7 @@ public interface Motion extends URScriptInterface {
 		movej(q, 1.4f, 1.05f, 0.0f, 0f);
 	}
 
-	void movej(@Named("p") CartesianPosition q, @Named("a=") float joint_acceleration, @Named("v=") float joint_speed, @Named("t=") float time, @Named("r=") float blend_radius);
+	void movej(CartesianPosition q, @Named("a=") float joint_acceleration, @Named("v=") float joint_speed, @Named("t=") float time, @Named("r=") float blend_radius);
 
 	default void movej(CartesianPosition q) {
 		movej(q, 1.4f, 1.05f, 0.0f, 0f);
@@ -183,7 +183,7 @@ public interface Motion extends URScriptInterface {
 	 * @param blend_radius
 	 *            blend radius [m]
 	 */
-	void movel(@Named("p") CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("t=") float time, @Named("r=") float blend_radius);
+	void movel(CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("t=") float time, @Named("r=") float blend_radius);
 
 	default void movel(CartesianPosition pose) {
 		movel(pose, 1.2f, 0.25f, 0f, 0f);
@@ -205,7 +205,7 @@ public interface Motion extends URScriptInterface {
 	 * @param blend_radius
 	 *            blend radius [m]
 	 */
-	void movep(@Named("p") CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("r=") float blend_radius);
+	void movep(CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("r=") float blend_radius);
 
 	default void movep(CartesianPosition pose) {
 		movep(pose, 1.2f, 0.25f, 0f);
@@ -226,7 +226,7 @@ public interface Motion extends URScriptInterface {
 	 * @param blend_radius
 	 *            blend radius (of target pose) [m]
 	 */
-	void servoc( @Named("p") CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("r=") float blend_radius);
+	void servoc( CartesianPosition pose, @Named("a=") float tool_acceleration, @Named("v=") float tool_speed, @Named("r=") float blend_radius);
 
 	default void servoc(CartesianPosition pose) {
 		servoc(pose, 1.2f, 0.25f, 0f);
@@ -303,7 +303,7 @@ public interface Motion extends URScriptInterface {
 	 * @param joint_acceleration
 	 * @param t_min
 	 */
-	void speedj( float joint_speeds,float a, float t_min);
+	void speedj(float joint_speeds,float a, float t_min);
 
 	/**
 	 * Makes robot movement (movej etc.) follow the original trajectory instead
@@ -344,7 +344,7 @@ public interface Motion extends URScriptInterface {
 
 	/**
 	 * Set robot in freedrive mode. In this mode the robot can be moved around
-	 * by hand in the same way as by pressing the â€�freedriveâ€� button. The
+	 * by hand in the same way as by pressing the freedrive button. The
 	 * robot wuill not be able to follow a trajectory (eg. a movej) in this
 	 * mode.
 	 */
@@ -367,7 +367,7 @@ public interface Motion extends URScriptInterface {
 	 *            Should the tool rotate with the coneyor or stay in the
 	 *            orientation specified by the trajectory (movel() etc.).
 	 */
-	void track_conveyor_circular(@Named("p") CartesianPosition center, float ticks_per_revolution, boolean rotate_tool);
+	void track_conveyor_circular(CartesianPosition center, float ticks_per_revolution, boolean rotate_tool);
 
 	/**
 	 * Makes robot movement (movej() etc.) track a linear conveyor. >>> track
@@ -382,6 +382,6 @@ public interface Motion extends URScriptInterface {
 	 *            How many tichs the encoder sees when the conveyor moves one
 	 *            meter
 	 */
-	void track_conveyor_linear(@Named("p") CartesianPosition direction, float ticks_per_meter);
+	void track_conveyor_linear(CartesianPosition direction, float ticks_per_meter);
 
 }

@@ -76,12 +76,9 @@ public interface Internals extends URScriptInterface {
 	 *            Define the max allowed orientation error. Optional.
 	 * @return joint positions
 	 */
-	JointPosition get_inverse_kin(@Named("p")  CartesianPosition x, @Named("qnear=") JointPosition qnear, @Named("maxPositionError=") float maxPositionError,@Named("maxOrientationError=") float maxOrientationError);
+	JointPosition get_inverse_kin(CartesianPosition x, @Named("qnear=") JointPosition qnear,@Named("maxPositionError=") float maxPositionError, @Named("maxOrientationError=") float maxOrientationError);
 
-	default JointPosition get_inverse_kin(CartesianPosition x) {
-		return get_inverse_kin(x, new JointPosition(new double[] { -1.6f, -1.7f, -2.2f, -0.8f, 1.6f, 0.0f }),
-				0.0001f, 0.0001f);
-	}
+	JointPosition get_inverse_kin(CartesianPosition x);
 
 	
 	/**
