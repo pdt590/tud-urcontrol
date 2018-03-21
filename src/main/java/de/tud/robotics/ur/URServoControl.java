@@ -61,6 +61,10 @@ public class URServoControl {
 		thread.start();
 	}
 	
+	public void setSpeedPercentage(float speed) {
+		this.speedPercentage = speed;
+	}
+	
 	public void dispose() {
 		thread.interrupt();
 		synchronized (thread) {
