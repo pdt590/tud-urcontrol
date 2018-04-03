@@ -31,10 +31,8 @@ public class SecondaryURClient extends CommonURClient {
 	
 	// data
 	protected RobotModeData robotModeData;
-	protected JointData jointData;
 	protected ToolData toolData;
 	protected MasterboardData masterBoardData;
-	protected CartesianData cartesianData;
 	protected KinematicsData kinematicsData;
 	protected ConfigurationData configurationData;
 	protected ForceModeData forceModeData;

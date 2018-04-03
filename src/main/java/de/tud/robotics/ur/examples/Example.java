@@ -22,8 +22,8 @@ public class Example implements URClientListener {
 	}
 	
 	public void run() {
-		URClient c = new SecondaryURClient("172.31.1.141");
-		c.setUpdateFrequence(RobotPackageType.JOINT_DATA, 1);
+		URClient c = new SecondaryURClient("172.31.1.144");
+		c.setUpdateFrequence(RobotPackageType.JOINT_DATA, 125);
 		c.addListener(this);
 		try {
 			c.connect();
@@ -68,7 +68,7 @@ public class Example implements URClientListener {
 		
 		mx.servoj(pos);
 		list.forEach(p -> {
-			mx.servoj(p);
+			//mx.servoj(p);
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {
@@ -84,7 +84,7 @@ public class Example implements URClientListener {
 	public void notify(RobotPackageData data) {
 		if(data instanceof JointData) {
 			JointData d = (JointData) data;
-			System.out.println("Joint data everi 1 second");
+			System.out.println("Joint data every 1 second");
 			System.out.println(d.toJointPosition().toString());
 		}
 		

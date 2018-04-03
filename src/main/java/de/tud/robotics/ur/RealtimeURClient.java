@@ -55,17 +55,6 @@ public class RealtimeURClient extends CommonURClient {
 			}
 			currentTime = System.currentTimeMillis();
 			a = messageHeader.findFieldForType(JBBPFieldArrayByte.class).getArray();
-			// TODO Remove
-			/*for(int i = 0; i < a.length; i = i+8) {
-				byte[] test = new byte[] {a[i],a[i+1],a[i+2],a[i+3],a[i+4],a[i+5],a[i+6],a[i+7]};
-				System.out.println("test:"+Arrays.toString(test));
-				double d = ByteBuffer.wrap(test).order(ByteOrder.BIG_ENDIAN ).getDouble();
-				
-				System.out.println(d);
-				byte[] bytes = new byte[8];
-			    ByteBuffer.wrap(bytes).putDouble(d);
-			    System.out.println("bytes:"+Arrays.toString(bytes));
-			}*/
 			realtimeMessage = URPackageJBBPParserHelper.getRealtimePackageParser().parse(a);
 			// parse Joint data
 			rtjd = new RealtimeJointData();

@@ -35,6 +35,7 @@ public class JointData extends RobotPackageData {
 
 
 	private double[] jointPositionArray() {
+		if(joints == null) return  new double[6];
 		double[] r = new double[joints.length];
 		for(int i = 0;i < joints.length; i++) {
 			r[i] = joints[i].qactual;
